@@ -153,20 +153,40 @@ export function GameBoard() {
         </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="grid grid-cols-3 gap-2"
-      >
-        {gameState.cells.map((cell, index) => (
-          <GameCell
-            key={index}
-            value={cell}
-            onClick={() => handleCellClick(index)}
-            disabled={!!gameState.winner || gameState.isDraw}
-          />
-        ))}
-      </motion.div>
+      <div className="flex items-start justify-start space-x-2">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="grid grid-cols-3 gap-2"
+        >
+          {gameState.cells.map((cell, index) => (
+            <GameCell
+              key={index}
+              value={cell}
+              onClick={() => handleCellClick(index)}
+              disabled={!!gameState.winner || gameState.isDraw}
+            />
+          ))}
+        </motion.div>
+        <button
+          onClick={resetGame}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+            <path d="M3 3v5h5" />
+          </svg>
+        </button>
+      </div>
 
       <GameConsole messages={gameState.consoleMessages} />
 
