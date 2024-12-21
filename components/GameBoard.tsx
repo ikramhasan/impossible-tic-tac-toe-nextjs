@@ -14,6 +14,7 @@ import {
 import { motion } from 'framer-motion';
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
+import Link from "next/link";
 
 const INITIAL_STATE: GameState = {
   cells: Array(9).fill(null),
@@ -168,9 +169,7 @@ export function GameBoard() {
             />
           ))}
         </motion.div>
-        <button
-          onClick={resetGame}
-        >
+        <button onClick={resetGame}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -189,6 +188,25 @@ export function GameBoard() {
       </div>
 
       <GameConsole messages={gameState.consoleMessages} />
+
+      <div className="mt-4 flex gap-4">
+        <Link
+          className="text-muted-foreground underline hover:text-foreground"
+          href="https://ikramhasan.com?ref=impossible-tic-tac-toe"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          About me
+        </Link>
+        <Link
+          className="text-muted-foreground underline hover:text-foreground"
+          href="https://ikramhasan.com/blogs/how-i-made-a-tictactoe-game-that-you-cannot-beat"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read the blog post
+        </Link>
+      </div>
 
       <GameResultDialog
         isOpen={!!gameState.winner || gameState.isDraw}
