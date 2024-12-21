@@ -27,9 +27,9 @@ export function GameConsole({ messages }: GameConsoleProps) {
         className="h-40 py-2 overflow-y-auto space-y-2 scrollbar-thin scrollbar-thumb-border scrollbar-track-background"
       >
         {messages.map((message, index) => (
-          <div key={index} className="flex">
-            <span className="text-muted-foreground mr-2">&gt; Console: </span>
-            <span>{message}</span>
+          <div key={index} className="whitespace-pre-wrap break-words">
+            <span className="text-muted-foreground">&gt; Console: </span>
+            {message}
           </div>
         ))}
       </div>
